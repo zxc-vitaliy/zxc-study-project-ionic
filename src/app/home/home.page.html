@@ -13,30 +13,48 @@
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <ion-row align-items-center margin-top>
       <ion-item>
-        <ion-input formControlName="a" type="number" style="width: 50px"></ion-input>
+        <ion-input formControlName="a" type="number" style="width: 30px"></ion-input>
         <ion-label>x^2</ion-label>
       </ion-item>
       +
       <ion-item>
-        <ion-input formControlName="b" type="number" style="width: 50px"></ion-input>
+        <ion-input formControlName="b" type="number" style="width: 30px"></ion-input>
         <ion-label>x</ion-label>
       </ion-item>
       +
       <ion-item>
-        <ion-input formControlName="c" type="number" style="width: 50px"></ion-input>
+        <ion-input formControlName="c" type="number" style="width: 30px"></ion-input>
       </ion-item>
       = 0
-      <ion-textarea margin-start *ngIf="screenOrientation.type === screenOrientation.ORIENTATIONS.LANDSCAPE_PRIMARY" [value]="result">
+      <ion-textarea margin-start
+                    *ngIf="screenOrientation.type === screenOrientation.ORIENTATIONS.LANDSCAPE_PRIMARY ||
+                         screenOrientation.type === screenOrientation.ORIENTATIONS.LANDSCAPE_SECONDARY ||
+                         screenOrientation.type === screenOrientation.ORIENTATIONS.LANDSCAPE"
+                    [value]="result">
       </ion-textarea>
-      <ion-button margin-start *ngIf="screenOrientation.type === screenOrientation.ORIENTATIONS.LANDSCAPE_PRIMARY" type="submit">
+      <ion-button margin-start
+                  *ngIf="screenOrientation.type === screenOrientation.ORIENTATIONS.LANDSCAPE_PRIMARY ||
+                         screenOrientation.type === screenOrientation.ORIENTATIONS.LANDSCAPE_SECONDARY ||
+                         screenOrientation.type === screenOrientation.ORIENTATIONS.LANDSCAPE"
+                  type="submit">
         Посчитать
       </ion-button>
     </ion-row>
     <ion-row margin-top>
-      <ion-button *ngIf="screenOrientation.type === screenOrientation.ORIENTATIONS.PORTRAIT_PRIMARY" type="submit">Посчитать</ion-button>
+      <ion-button
+          *ngIf="screenOrientation.type === screenOrientation.ORIENTATIONS.PORTRAIT_PRIMARY ||
+                         screenOrientation.type === screenOrientation.ORIENTATIONS.PORTRAIT_SECONDARY ||
+                         screenOrientation.type === screenOrientation.ORIENTATIONS.PORTRAIT"
+          type="submit">
+        Посчитать
+      </ion-button>
     </ion-row>
   </form>
 
-  <ion-textarea *ngIf="screenOrientation.type === screenOrientation.ORIENTATIONS.PORTRAIT_PRIMARY" [value]="result">
+  <ion-textarea
+      *ngIf="screenOrientation.type === screenOrientation.ORIENTATIONS.PORTRAIT_PRIMARY ||
+                         screenOrientation.type === screenOrientation.ORIENTATIONS.PORTRAIT_SECONDARY ||
+                         screenOrientation.type === screenOrientation.ORIENTATIONS.PORTRAIT"
+      [value]="result">
   </ion-textarea>
 </ion-content>

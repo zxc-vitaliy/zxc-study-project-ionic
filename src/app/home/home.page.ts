@@ -36,7 +36,7 @@ export class HomePage implements OnInit, OnChanges {
 
     const that = this;
 
-    this.screenOrientation.onChange().subscribe((orientation) => {
+    this.screenOrientation.onChange().subscribe(() => {
       that.currentOrientation = that.screenOrientation.type;
     });
   }
