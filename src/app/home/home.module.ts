@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
 import { SharedModule } from '../shared/shared.module';
+import { TranslateModule } from '@ngx-translate/core';
+import { AppModule } from '../app.module';
 
 @NgModule({
   imports: [
@@ -19,7 +21,8 @@ import { SharedModule } from '../shared/shared.module';
       }
     ]),
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    TranslateModule
   ],
   declarations: [HomePage]
 })

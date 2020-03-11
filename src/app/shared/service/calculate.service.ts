@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Logger } from './logger.service';
 
 @Injectable()
 export class CalculateService {
@@ -18,5 +19,18 @@ export class CalculateService {
     const x2 = (-b - Math.sqrt(discriminant)) / (2 * a);
 
     return [x1, x2];
+  }
+}
+
+@Injectable()
+export class LoggedCalculateService extends CalculateService {
+  constructor(private logger: Logger) {
+    super();
+  }
+
+  calculate(a: number, b: number, c: number): [number, number] {
+    const x1x2 = super.calculate(a, b, c);
+    this.logger.log(x1x2);
+    return x1x2;
   }
 }

@@ -11,17 +11,12 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let item of items">
-      <ion-icon [name]="item.icon" slot="start"></ion-icon>
-      {{item.title}}
+    <ion-item *ngFor="let item of items$ | async; let i = index">
+      <ion-icon name="checkmark" slot="start"></ion-icon>
+      Результат №{{i}}
       <div class="item-note" slot="end">
-        {{item.note}}
+        x1 = {{item[0]}} x2 = {{item[1]}}
       </div>
     </ion-item>
   </ion-list>
-  <!--
-    <div *ngIf="selectedItem" padding>
-      You navigated here from <b>{{selectedItem.title }}</b>
-    </div>
-  -->
 </ion-content>

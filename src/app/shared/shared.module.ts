@@ -1,13 +1,28 @@
 import { NgModule } from '@angular/core';
-import { CalculateService } from './service/calculate.service';
+import { CalculateService, LoggedCalculateService } from './service/calculate.service';
+import { Logger, SqlLiteLogger } from './service/logger.service';
+import { SQLite } from '@ionic-native/sqlite/ngx';
+import { EquationFormComponent } from './equation-form/equation-form.component';
+import { IonicModule } from '@ionic/angular';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { DatabaseService } from './dao/database.service';
 
 @NgModule({
-  declarations: [],
+  declarations: [EquationFormComponent],
   entryComponents: [],
-  imports: [],
+  imports: [
+    IonicModule,
+    ReactiveFormsModule,
+    CommonModule
+  ],
   providers: [
-    CalculateService
-  ]
+    {provide: CalculateService, useClass: LoggedCalculateService},
+    {provide: Logger, useClass: SqlLiteLogger},
+    SQLite,
+    DatabaseService
+  ],
+  exports: [EquationFormComponent]
 })
 export class SharedModule {
 }
